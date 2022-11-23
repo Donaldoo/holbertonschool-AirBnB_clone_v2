@@ -14,10 +14,11 @@ class test_fileStorage(unittest.TestCase):
     def setUp(self):
         """ Set up test environment """
         del_list = []
-        for key in storage._FileStorage__objects.keys():
+        self.storage = FileStorage()
+        for key in self.storage.all().keys():
             del_list.append(key)
         for key in del_list:
-            del storage._FileStorage__objects[key]
+            del self.storage.all()[key]
 
     def tearDown(self):
         """ Remove storage file at end of tests """
@@ -112,14 +113,16 @@ class test_fileStorage(unittest.TestCase):
 
     def test_documentation(self):
         """ Test docstrings documentation"""
+
         self.assertTrue(file_storage.__doc__)
         self.assertTrue(file_storage.FileStorage.__doc__)
 
     def test_methods_doc(self):
-        """ Test all doctrings for each method"""
+        """ Test all docstrings of each method"""
+
         for all_methods in dir(FileStorage):
             self.assertTrue(all_methods.__doc__)
 
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     unittest.main()
