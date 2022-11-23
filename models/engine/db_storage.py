@@ -13,6 +13,15 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 from sqlalchemy.schema import MetaData
 
 
+username = getenv('HBNB_MYSQL_USER')
+password = getenv('HBNB_MYSQL_PWD')
+host = getenv('HBNB_MYSQL_HOST')
+db = getenv('HBNB_MYSQL_DB')
+v_env = getenv('HBNB_ENV')
+
+URI = f"mysql+mysqldb://{username}:{password}@{host}/{db}"
+
+
 class DBStorage:
     """SQLAlchemy storage"""
     __engine = None
@@ -20,14 +29,9 @@ class DBStorage:
 
     def __init__(self):
         """init engine"""
-        user = getenv('HBNB_MYSQL_USER')
-        pwd = getenv('HBNB_MYSQL_PWD')
-        host = getenv('HBNB_MYSQL_HOST')
-        db = getenv('HBNB_MYSQL_DB')
-        self.__engine = create_engine(f'mysql+mysqldb://{user}:{pwd}@'
-                                      f'{host}/{db}', pool_pre_ping=True)
+        self.__engine = create_engine(URI, pool_pre_ping=True)
 
-        if getenv('HBNB_ENV') == 'test':
+        if v_env == 'test':
             metadata = MetaData(self.__engine)
             metadata.reflect()
             metadata.drop_all()
