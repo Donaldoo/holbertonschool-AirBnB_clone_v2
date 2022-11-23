@@ -4,7 +4,7 @@ import unittest
 from models.base_model import BaseModel
 from models import storage
 import os
-from model.engine import file_storage
+from models.engine import file_storage
 from models.engine.file_storage import FileStorage
 
 
