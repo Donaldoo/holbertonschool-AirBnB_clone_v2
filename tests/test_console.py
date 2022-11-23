@@ -17,7 +17,7 @@ class TestConsole(unittest.TestCase):
     def test_methods_doc(self):
         """Testing all docstring of all methods"""
         for all_methods in dir(HBNBCommand):
-            self.assertTRue(all_methods.__doc__)
+            self.assertTrue(all_methods.__doc__)
 
 
 if __name__ == '__main__':
