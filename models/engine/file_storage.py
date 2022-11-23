@@ -12,11 +12,11 @@ class FileStorage:
         """Returns the list of objects of one type of class"""
         if (cls):
             cls_dict = {}
-            for key, value in FileStorage.__objects.items():
+            for key, value in self.__objects.items():
                 if type(value) == cls:
                     cls_dict[key] = value
                 return cls_dict
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """Adds new object to storage dictionary"""
