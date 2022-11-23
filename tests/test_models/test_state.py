@@ -8,12 +8,12 @@ class test_state(test_basemodel):
     """ """
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """ Constructor """
         super().__init__(*args, **kwargs)
         self.name = "State"
         self.value = State
 
     def test_name3(self):
-        """ """
-        new = self.value()
+        """ Test"""
+        new = self.value(name="Alabama")
         self.assertEqual(type(new.name), str)

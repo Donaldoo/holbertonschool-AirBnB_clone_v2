@@ -5,15 +5,15 @@ from models.amenity import Amenity
 
 
 class test_Amenity(test_basemodel):
-    """ """
+    """ test class for amenity """
 
     def __init__(self, *args, **kwargs):
-        """ """
+        """ Constructor """
         super().__init__(*args, **kwargs)
         self.name = "Amenity"
         self.value = Amenity
 
     def test_name2(self):
-        """ """
-        new = self.value()
+        """ Test """
+        new = self.value(name="awda")
         self.assertEqual(type(new.name), str)
