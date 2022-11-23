@@ -7,20 +7,12 @@ from sqlalchemy.orm import relationship
 
 class User(BaseModel, Base):
     """This class defines a user by various attributes"""
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/alt
     __tablename__ = "users"
 
     email = Column(String(128), nullable=False)
     password = Column(String(128), nullable=False)
     first_name = Column(String(128))
     last_name = Column(String(128))
-<<<<<<< HEAD
-    places = relationship("Place", backref="user", cascade="all, delete", passive_deletes=True)
-    reviews = relationship("Review", backref="user", cascade="all, delete", passive_deletes=True)
-=======
     reviews = relationship('Review', backref='user', cascade='delete')
     places = relationship('Place', backref='user', cascade='delete')
->>>>>>> origin/alt
