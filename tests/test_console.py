@@ -1,0 +1,24 @@
+#!/usr/bin/python3
+"""Test console module"""
+
+import unittest
+import console
+from console import HBNBCommand
+
+
+class TestConsole(unittest.TestCase):
+    """Class to test console"""
+
+    def test_documentation(self):
+        """Testing module docstring"""
+        self.assertTrue(console.__doc__)
+        self.assertTrue(console.HBNBCommand.__doc__)
+
+    def test_methods_doc(self):
+        """Testing all docstring of all methods"""
+        for all_methods in dir(HBNBCommand):
+            self.assertTRue(all_methods.__doc__)
+
+
+if __name__ == '__main__':
+    unittest.main()
