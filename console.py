@@ -133,12 +133,12 @@ class HBNBCommand(cmd.Cmd):
         if argv[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
-        
+ 
         attributes = {}
         for attr in argv[1:]:
             new_dict = attr.split('=', 1)
             attributes[new_dict[0]] = new_dict[1]
-        
+ 
         new_instance = HBNBCommand.classes[argv[0]]()
 
         for key, value in attributes.items():
@@ -158,7 +158,6 @@ class HBNBCommand(cmd.Cmd):
             else:
                 value = int(value)"""
 
-       
         print(new_instance.id)
         new_instance.save()
 
@@ -355,6 +354,7 @@ class HBNBCommand(cmd.Cmd):
         """ Help information for the update class """
         print("Updates an object with new information")
         print("Usage: update <className> <id> <attName> <attVal>\n")
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
