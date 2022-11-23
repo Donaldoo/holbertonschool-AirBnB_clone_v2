@@ -106,7 +106,7 @@ class test_basemodel(unittest.TestCase):
     def test_documentation(self):
         """ Test mmodule docstring"""
         self.assertTrue(base_model.__doc__)
-        self.assertTrue()base_model.BaseModel.__doc__)
+        self.assertTrue(base_model.BaseModel.__doc__)
 
     def test_methods_doc(self):
         """Testing all docstrings of each method"""
