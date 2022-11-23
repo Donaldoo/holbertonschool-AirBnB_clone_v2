@@ -4,6 +4,8 @@ import unittest
 from models.base_model import BaseModel
 from models import storage
 import os
+from model.engine import file_storage
+from models.engine.file_storage import FileStorage
 
 
 class test_fileStorage(unittest.TestCase):
@@ -107,3 +109,17 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+    def test_documentation(self):
+        """ Test docstrings documentation"""
+        self.assertTrue(file_storage.__doc__)
+        self.assertTrue(file_storage.FileStorage.__doc__)
+
+    def test_methods_doc(self):
+        """ Test all doctrings for each method"""
+        for all_methods in dir(FileStorage):
+            self.assertTrue(all_methods.__doc__)
+
+
+if __name__ = '__main__':
+    unittest.main()
