@@ -36,12 +36,12 @@ class test_fileStorage(unittest.TestCase):
         new = BaseModel()
         for obj in storage.all().values():
             temp = obj
-        self.assertTrue(temp is obj)
+            self.assertTrue(temp is obj)
 
     def test_all(self):
         """ __objects is properly returned """
         new = BaseModel()
-        temp = storage.all()
+        temp = self.storage.all()
         self.assertIsInstance(temp, dict)
 
     def test_base_model_instantiation(self):
@@ -53,14 +53,15 @@ class test_fileStorage(unittest.TestCase):
         """ Data is saved to file """
         new = BaseModel()
         thing = new.to_dict()
-        new.save()
+        self.storage.new(new)
+        self.storage.save()
         new2 = BaseModel(**thing)
         self.assertNotEqual(os.path.getsize('file.json'), 0)
 
     def test_save(self):
         """ FileStorage save method """
         new = BaseModel()
-        storage.save()
+        self.storage.save()
         self.assertTrue(os.path.exists('file.json'))
 
     def test_reload(self):
@@ -68,9 +69,9 @@ class test_fileStorage(unittest.TestCase):
         new = BaseModel()
         storage.save()
         storage.reload()
-        for obj in storage.all().values():
+        for obj in self.storage.all().values():
             loaded = obj
-        self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
+            self.assertEqual(new.to_dict()['id'], loaded.to_dict()['id'])
 
     def test_reload_empty(self):
         """ Load from an empty file """
@@ -86,7 +87,8 @@ class test_fileStorage(unittest.TestCase):
     def test_base_model_save(self):
         """ BaseModel save method calls storage save """
         new = BaseModel()
-        new.save()
+        self.storage.new(new)
+        self.storage.save()
         self.assertTrue(os.path.exists('file.json'))
 
     def test_type_path(self):
@@ -95,7 +97,7 @@ class test_fileStorage(unittest.TestCase):
 
     def test_type_objects(self):
         """ Confirm __objects is a dict """
-        self.assertEqual(type(storage.all()), dict)
+        self.assertEqual(type(self.storage.all()), dict)
 
     def test_key_format(self):
         """ Key is properly formatted """
@@ -103,7 +105,7 @@ class test_fileStorage(unittest.TestCase):
         _id = new.to_dict()['id']
         for key in self.storage.all().keys():
             temp = key
-        self.assertEqual(temp, 'BaseModel' + '.' + _id)
+            self.assertEqual(temp, 'BaseModel' + '.' + _id)
 
     def test_storage_var_created(self):
         """ FileStorage object storage created """
