@@ -133,12 +133,12 @@ class HBNBCommand(cmd.Cmd):
         if argv[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
- 
+
         attributes = {}
         for attr in argv[1:]:
             new_dict = attr.split('=', 1)
             attributes[new_dict[0]] = new_dict[1]
- 
+
         new_instance = HBNBCommand.classes[argv[0]]()
 
         for key, value in attributes.items():
