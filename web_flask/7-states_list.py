@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-""" Starts a Flask web app """
+"""
+Starts a Flask web app
+"""
 
 
 from models import storage
 from flask import Flask, render_template
-
 app = Flask(__name__)
 
 
