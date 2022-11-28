@@ -19,7 +19,7 @@ host = getenv('HBNB_MYSQL_HOST')
 db = getenv('HBNB_MYSQL_DB')
 v_env = getenv('HBNB_ENV')
 
-URI = f"mysql+mysqldb://{username}:{password}@{host}/{db}"
+url = "mysql+mysqldb://{}:{}@{}/{}".format(username, password, host, db)
 
 
 class DBStorage:
@@ -29,7 +29,7 @@ class DBStorage:
 
     def __init__(self):
         """init engine"""
-        self.__engine = create_engine(URI, pool_pre_ping=True)
+        self.__engine = create_engine(url, pool_pre_ping=True)
 
         if v_env == 'test':
             metadata = MetaData(self.__engine)
