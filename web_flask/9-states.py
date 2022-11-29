@@ -23,7 +23,7 @@ def states_id(id):
     for state in states:
         if state.id == id:
             return render_template('9-states.html', states=state, id=state.id)
-    return render_tempalte('9-states.html', states=state)
+    return render_tempalte('9-states.html')
 
 
 @app.teardown_appcontext
