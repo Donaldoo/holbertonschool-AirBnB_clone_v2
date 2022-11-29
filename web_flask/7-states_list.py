@@ -3,7 +3,7 @@
 Starts a Flask web app
 """
 
-
+from models.state import State
 from models import storage
 from flask import Flask, render_template
 app = Flask(__name__)
@@ -18,7 +18,7 @@ def teardown(self):
 @app.route('/states_list', strict_slashes=False)
 def states_list():
     """ displays states """
-    states = storage.all("State").values()
+    states = storage.all(State).values()
     return render_template('7-states_list.html', states=states)
 
 
